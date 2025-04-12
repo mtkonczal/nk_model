@@ -1,3 +1,23 @@
+# Updated helper function to explain model variables.
+explain_nk_variables <- function() {
+  cat("New Keynesian Model Variable Explanations:\n")
+  cat("-------------------------------------------------\n")
+  cat("A: Autonomous spending – exogenous demand in the economy.\n")
+  cat("pt: Inflation target – the central bank's desired inflation rate.\n")
+  cat("ye: Potential output – the economy's natural or potential level of output.\n")
+  cat("vt: Supply shock – exogenous shock affecting the supply side (e.g., cost shocks).\n")
+  cat("y: Output – the actual level of economic production/output.\n")
+  cat("p: Inflation – the actual rate of inflation over time.\n")
+  cat("rs: Stabilising (neutral) interest rate – the rate that keeps the economy at equilibrium.\n")
+  cat("r: Real interest rate – the actual interest rate, adjusted via the Fed's policy rule.\n")
+  cat("culminate_inflation: Cumulative inflation factor computed as the final value of cumprod((p/100) + 1).\n")
+  cat("culminate_growth: Cumulative growth factor for output, computed as final output divided by initial output.\n")
+  cat("\nAdditional Parameter:\n")
+  cat("fed_response: Multiplier indicating the strength of the Fed's reaction to the inflation gap.\n")
+  cat("               (1 = full response, 0 = no response)\n")
+  cat("-------------------------------------------------\n")
+}
+
 # Returns a named vector of colors for New Keynesian model variables.
 get_nk_colors <- function() {
   colors <- c(
@@ -77,7 +97,10 @@ plot_nk_output <- function(sim_data, vars, sims, scenario_titles = NULL) {
       panel.border = element_rect(color = "black", fill = NA, size = 1),
       panel.spacing = unit(0.5, "lines")
     ) +
-    theme(legend.position = "none")
+    theme(legend.position = "none") +
+    labs(caption = "Model via Mike Konczal")
   
   p
 }
+
+
